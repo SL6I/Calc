@@ -14,7 +14,12 @@
 
     // TODO: fix remove spaces
     function backspace() {
-        equation = equation.substring(0, equation.length - 1);
+        if (equation.at(equation.length - 1) == ' '){
+        equation = equation.substring(0, equation.length - 3);
+        }
+        else{
+            equation = equation.substring(0, equation.length - 1);
+        }
     }
 
     function clear() {
@@ -29,11 +34,11 @@
 </svelte:head>
 
 <div
-    class="bg-white rounded-3xl grid grid-cols-4 gap-1 p-6 font-semibold text-xl shadow-xl"
+    class="bg-white rounded-3xl grid grid-cols-4 gap-1 p-6 font-semibold text-xl shadow-xl max-w-[15.5rem]"
 >
     <!-- TODO: fix overflowing numbers -->
     <div
-        class="bg-blue-500 rounded-full col-span-4 h-12 flex items-center px-4 mb-2 text-white"
+        class="bg-blue-500 rounded-xl col-span-4 min-h-12 flex items-center px-4 mb-2 text-white break-all"
     >
         {equation}
     </div>
